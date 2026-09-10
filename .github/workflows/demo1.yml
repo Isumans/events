@@ -3,6 +3,17 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev-*
+      - tags/**
+    paths:
+      - 'src/**'
+      - 'package.json'
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
